@@ -26,6 +26,15 @@
             font-size:3rem;
             opacity: 0.8;
         }
+
+        #s1{
+            background-size: cover;
+            background: #fff url("static/s3.png") no-repeat center;
+            margin:20px 0;
+        }
+        #s2 {
+            padding: 5% 35%;
+        }
     </style>
 </head>
 
@@ -33,11 +42,11 @@
 <body>
 
 
-<div class="container">
-    <div class="row">
-    <form class="form-signin" method="post" action="/login1.html">
+<div id="s1" >
+    <div class="row" id="s2">
+    <form class="form-signin" method="post" action="/login1.html" >
             {% csrf_token %}
-        <p class="mb-3 loginHeader">Please sign in</p>
+        <p class="mb-3 loginHeader">Sign In</p>
         <br>
         <div class="form-group">
         <label for="inputEmail" class="sr-only">Username</label>

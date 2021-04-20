@@ -4,7 +4,7 @@ from Home import views
 
 urlpatterns = [
   #  path('admin/', admin.site.urls),
-    path('login', views.loginU,name = 'login'),
+    #path('login', views.loginU,name = 'login'),
     path('logout', views.logoutU,name = 'logout'),
     path('login1.html', views.login1,name = 'login1'),
     path('', views.index,name = 'index'),
@@ -17,5 +17,7 @@ urlpatterns = [
     path('c4.html', views.c4,name = 'c4.html'),
     path('c5.html', views.c5,name = 'c5.html'),
     path('c6.html', views.c6,name = 'c6.html'),
+    path('signup.html', views.signup,name = 'signup.html'),
+path('upload_file.html', views.UploadView, name='upload_file'),
 
 ]

@@ -1,13 +1,33 @@
 from django.contrib import auth
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render, HttpResponse, redirect
-from django.contrib.auth import logout
-from django.contrib.auth.models import User
 from django.db import models
-from .models import Contact
+from django.views.generic.list import ListView
+from .models import Contact,faculty,Post
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
+from django.shortcuts import render, redirect
+from .forms import SignUpForm
 
 # Maria@20
 # Create your views here.
+
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = SignUpForm()
+    return render(request, 'signup.html', {'form': form})
+
+
 def index(request):
     return render(request, 'index.html')
 
@@ -83,3 +103,19 @@ def login1(request):
             return render(request, 'login1.html')
 
     return render(request, 'login1.html')
+
+class UploadView(ListView):
+    def get(self, request, user_name):
+        return render(request, 'main/upload_file.html')
+
+
+    def post(self, request, user_name):
+        filename = request.FILES['filename']
+        title = request.POST['title']
+        desc = request.POST['desc']
+
+        user_obj = faculty.objects.get(username=user_name)
+        upload_post = Post(user=user_obj, title=title, file_field=filename, desc=desc)
+        upload_post.save()
+        messages.success(request, 'Your Post has been uploaded successfully.')
+        return render(request, 'main/upload_file.html')
