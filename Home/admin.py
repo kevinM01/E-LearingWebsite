@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Contact, faculty, Post
+from .models import Contact, faculty, Upload_Files
 
 admin.site.register(Contact)
 
@@ -13,6 +13,8 @@ class UserAdmin(admin.ModelAdmin):
 
 
 
-@admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
-    list_display = ['user', 'title', 'file_field']
+# @admin.register(Post)
+# class PostAdmin(admin.ModelAdmin):
+#     list_display = ['user', 'title', 'file_field']
+
+admin.site.register(Upload_Files)

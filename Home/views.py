@@ -1,7 +1,7 @@
-from django.contrib import auth
+from django.contrib import auth,messages
 from django.db import models
 from django.views.generic.list import ListView
-from .models import Contact,faculty,Post
+from .models import Contact,faculty,Upload_Files
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 from .forms import SignUpForm
 
 # Maria@20
-# Create your views here.
+# Create your views here.s
 
 
 
@@ -60,6 +60,8 @@ def aboutus(request):
 def catalog(request):
     return render(request, 'catalog.html')
 
+def catalog_faculty(request):
+    return render(request, 'catalog_faculty.html')
 
 def contactus(request):
     if request.method=='POST':
@@ -94,13 +96,14 @@ def login_faculty(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        # contactus = Contact(name=name, email=email, phone=phone, desc=desc)
-        login_faculty = faculty(username=username, password=password)
-        if login_faculty is not None:
-            login(request, login_faculty)
-            return render(request, '/')
+
+        if faculty.objects.filter(username=username, password=password):
+            teacher = faculty.objects.get(username=username)
+            return redirect('catalog_faculty.html')
+
         else:
-            return render(request, 'login_faculty.html')
+            messages.info(request, "Invalid Credentials")
+            return redirect('/login_faculty.html')
 
     return render(request, 'login_faculty.html')
 
@@ -117,18 +120,33 @@ def login1(request):
 
     return render(request, 'login1.html')
 
-class UploadView(ListView):
-    def get(self, request, user_name):
-        return render(request, 'main/upload_file.html')
+# class UploadView(ListView):
+#     def get(self, request, user_name):
+#         return render(request, 'main/upload_file.html')
+#
+#
+#     def post(self, request, user_name):
+#         filename = request.FILES['filename']
+#         title = request.POST['title']
+#         desc = request.POST['desc']
+#
+#         user_obj = faculty.objects.get(username=user_name)
+#         upload_post = Post(user=user_obj, title=title, file_field=filename, desc=desc)
+#         upload_post.save()
+#         messages.success(request, 'Your Post has been uploaded successfully.')
+#         return render(request, 'main/upload_file.html')
 
+def upload_file(request):
+    files = Upload_Files.objects.all()
+    if request.method == "POST":
+        lecture_no = request.POST.get('lecture_no')
+        topic_name = request.POST.get('topic_name')
+        video_file = request.FILES.get('video_file')
+        notes_file = request.FILES.get('notes_file')
 
-    def post(self, request, user_name):
-        filename = request.FILES['filename']
-        title = request.POST['title']
-        desc = request.POST['desc']
+        file = Upload_Files.objects.create(lecture_no=lecture_no, topic_name=topic_name, video_file=video_file, notes_file=notes_file)
 
-        user_obj = faculty.objects.get(username=user_name)
-        upload_post = Post(user=user_obj, title=title, file_field=filename, desc=desc)
-        upload_post.save()
-        messages.success(request, 'Your Post has been uploaded successfully.')
-        return render(request, 'main/upload_file.html')
+        file.save()
+        return redirect('catalog_faculty')
+
+    return render(request, 'upload_file.html', {"files":files})

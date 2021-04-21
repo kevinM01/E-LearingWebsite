@@ -25,13 +25,19 @@ class faculty(models.Model):
         return self.username
 
 
-class Post(models.Model):
-    user = models.ForeignKey(faculty, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    file_field = models.FileField(upload_to='uploads/')
-    desc = models.TextField()
+# class Post(models.Model):
+#     user = models.ForeignKey(faculty, on_delete=models.CASCADE)
+#     title = models.CharField(max_length=200)
+#     file_field = models.FileField(upload_to='static/')
+#     desc = models.TextField()
+#
+#     def __str__(self):
+#         return f'{self.user}=> {self.title}'
 
-    def __str__(self):
-        return f'{self.user}=> {self.title}'
+class Upload_Files(models.Model):
+    lecture_no = models.IntegerField()
+    topic_name = models.CharField(max_length=200)
+    video_file = models.FileField(upload_to="Material/")
+    notes_file = models.FileField(upload_to="Material/")
 
 

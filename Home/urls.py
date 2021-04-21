@@ -18,7 +18,8 @@ urlpatterns = [
     path('c5.html', views.c5,name = 'c5.html'),
     path('c6.html', views.c6,name = 'c6.html'),
     path('signup.html', views.signup,name = 'signup.html'),
-    path('upload_file.html', views.UploadView, name='upload_file'),
+    path('upload_file.html', views.upload_file, name='upload_file'),
     path('login_faculty.html', views.login_faculty,name = 'login_faculty'),
+    path('catalog_faculty.html', views.catalog_faculty,name = 'catalog_faculty'),
 
 ]

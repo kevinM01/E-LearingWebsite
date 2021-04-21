@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-MEDIA_ROOT = 'C:\\MANASI\\E-LearningWebsite\\media'
+
+MEDIA_ROOT = 'static'
 MEDIA_URL = 'media/'
 
 MIDDLEWARE = [
