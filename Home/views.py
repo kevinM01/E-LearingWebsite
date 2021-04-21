@@ -90,6 +90,19 @@ def c5(request):
 def c6(request):
     return render(request, 'c6.html')
 
+def login_faculty(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        # contactus = Contact(name=name, email=email, phone=phone, desc=desc)
+        login_faculty = faculty(username=username, password=password)
+        if login_faculty is not None:
+            login(request, login_faculty)
+            return render(request, '/')
+        else:
+            return render(request, 'login_faculty.html')
+
+    return render(request, 'login_faculty.html')
 
 def login1(request):
     if request.method == "POST":

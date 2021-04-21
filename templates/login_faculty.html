@@ -46,7 +46,7 @@
     <div class="row" id="s2">
     <form class="form-signin" method="post" action="/login1.html" >
             {% csrf_token %}
-        <p class="mb-3 loginHeader">Sign In</p>
+        <p class="mb-3 loginHeader"> Faculty Sign In</p>
         <br>
         <div class="form-group">
         <label for="inputEmail" class="sr-only">Username</label>
@@ -67,11 +67,7 @@
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         </div>
         <br>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
+
         <button class="btn btn-lg btn-primary" type="submit"><i class="fa fa-sign-in"></i> Sign in</button>
     </form>
         </div>
