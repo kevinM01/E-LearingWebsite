@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<body>
+
+    <h3><i>Study Notes</i></h3>
+        {% for Material in Materials %}
+
+    <embed src ='{{Material.notes_file.pdf}}'  width="100%" style="height:100vh;" />
+
+        {{Material.notes_file.url}}<br> <br>
+<!--<embed src ="static/python_tutorial.pdf#view=fitW" width="100%" style="height:100vh;" /><br> <br>-->
+
+
+{% endfor %}
+
+{% endblock body %}
