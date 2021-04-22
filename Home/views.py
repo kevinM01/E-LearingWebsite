@@ -116,6 +116,7 @@ def login_faculty(request):
 
         if faculty.objects.filter(username=username, password=password):
             teacher = faculty.objects.get(username=username)
+            faculty.save()
             return redirect('catalog_faculty.html')
 
         else:
