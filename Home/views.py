@@ -139,12 +139,12 @@ def login1(request):
 def upload_file(request):
     files = Upload_Files.objects.all()
     if request.method == "POST":
-        lecture_no = request.POST.get('lecture_no')
+
         topic_name = request.POST.get('topic_name')
-        video_file = request.FILES.get('video_file')
+        # video_file = request.FILES.get('video_file')
         notes_file = request.FILES.get('notes_file')
 
-        file = Upload_Files.objects.create(lecture_no=lecture_no, topic_name=topic_name, video_file=video_file, notes_file=notes_file)
+        file = Upload_Files.objects.create(topic_name=topic_name, notes_file=notes_file)
 
         file.save()
         return redirect('catalog_faculty')
