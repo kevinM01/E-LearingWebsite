@@ -47,3 +47,25 @@ Student Sign-In
 Faculty Sign-In
 
 ![FacultySignIn](https://user-images.githubusercontent.com/78092182/124167873-00fca500-dac2-11eb-8243-993bf97ddafd.png)
+
+Courses Page
+
+![courses1](https://user-images.githubusercontent.com/78092182/124168009-31dcda00-dac2-11eb-9783-1ba766a483dd.png)
+
+![courses2](https://user-images.githubusercontent.com/78092182/124168044-3acdab80-dac2-11eb-9bde-5c7cb4061fa2.png)
+
+Python Course
+
+![PythonCourse1](https://user-images.githubusercontent.com/78092182/124168172-6781c300-dac2-11eb-947d-a54f0cb99eee.png)
+
+![PythonCourse2](https://user-images.githubusercontent.com/78092182/124168181-6a7cb380-dac2-11eb-957b-9c34b6fc531b.png)
+
+Resources Page
+
+Students can download study material in a pdf format
+
+![Resources](https://user-images.githubusercontent.com/78092182/124168252-84b69180-dac2-11eb-9b89-7b35f5379861.png)
+
+Upload Feature in Faculty
+
+![Upload](https://user-images.githubusercontent.com/78092182/124168321-9c8e1580-dac2-11eb-8470-ed9195928ded.png)
